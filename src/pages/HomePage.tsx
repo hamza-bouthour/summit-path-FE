@@ -2,7 +2,7 @@ import { Box, Container, Title, Text, Button, Group, Stack, TextInput, Card, Ima
 import { IconArrowRight, IconClock, IconMail, IconPlayerPlay, IconBook } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import { articles, ebooks, tutorials } from '../data/mockData';
-import heroImage from '../../assets/hero-philosophy.jpg';
+import heroImage from '../assets/hero-philosophy.jpg';
 
 function HeroSection() {
   return (

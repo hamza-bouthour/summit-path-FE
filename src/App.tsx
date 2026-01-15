@@ -1,5 +1,5 @@
 import { useState, useCallback, createContext, useContext } from 'react';
-import { MantineProvider, AppShell, Burger, Group, UnstyledButton, Text, Box, Drawer, Stack, ActionIcon, Container, rem } from '@mantine/core';
+import { MantineProvider, AppShell, Burger, Group, UnstyledButton, Text, Box, Drawer, Stack, ActionIcon, Container, rem, Flex } from '@mantine/core';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { Notifications } from '@mantine/notifications';
 import { IconSun, IconMoon, IconBook, IconMenu2 } from '@tabler/icons-react';
@@ -14,6 +14,9 @@ import AboutPage from './pages/AboutPage';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 import './styles/app.css';
+import { IconBrandTabler } from '@tabler/icons-react';
+import { clsx } from 'clsx';
+import Dashboard from './pages/Dashboard';
 
 // Read mode context
 interface ReadModeContextType {
@@ -34,6 +37,7 @@ const navLinks = [
   { label: 'Ebooks', path: '/ebooks' },
   { label: 'Tutorials', path: '/tutorials' },
   { label: 'About', path: '/about' },
+  { label: 'Dashboard', path: '/dashboard' }, // needs guard. Admin only allowed
 ];
 
 function Header() {
@@ -88,7 +92,10 @@ function Header() {
                       }}
                       className="nav-link"
                     >
-                      {link.label}
+                      <Flex gap={5} className={clsx(link.path === '/dashboard' && 'dashboardLink')} align="center" px={link.path === '/dashboard' ? 8 : 0} py={link.path === '/dashboard' ? 4 : 0}>
+                        {link.label}
+                        {link.path === '/dashboard' && <IconBrandTabler size={20} color="#c99a4a" />}
+                      </Flex>
                     </Text>
                   </Link>
                 ))}
@@ -249,6 +256,7 @@ function AppContent() {
             <Route path="/ebooks" element={<EbooksPage />} />
             <Route path="/tutorials" element={<TutorialsPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </Box>
         <Footer />

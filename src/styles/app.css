@@ -228,3 +228,8 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #8b97a9;
 }
+
+.dashboardLink {
+  background-color: #dccaac4f;
+  border-radius: 6px;
+}

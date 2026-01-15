@@ -1,4 +1,5 @@
-import { Article, Author, Ebook, Tutorial } from '../types';
+import { Article, Author, Ebook, Tutorial } from "@/store";
+
 
 export const authors: Author[] = [
   {
